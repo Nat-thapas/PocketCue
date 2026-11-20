@@ -280,12 +280,12 @@
 {:else}
 	<div
 		class={cn(
-			'flex min-h-dvh flex-col transition-colors duration-700 select-none',
+			'flex min-h-dvh flex-col pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] transition-colors duration-700 select-none',
 			PHASE_CLASS[phase]
 		)}
 	>
 		<!-- Top bar -->
-		<div class="flex items-center gap-2 p-3">
+		<div class="flex items-center gap-2 p-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
 			{#if !session || paused}
 				<Button href={resolve('/')} variant="ghost" size="icon" aria-label="Back" class={ctrlClass}>
 					<ArrowLeftIcon />
@@ -310,26 +310,26 @@
 				{/if}
 			</div>
 			{#if fullscreen.available}
-				<Button
+				<HoldButton
 					variant="ghost"
 					size="icon"
 					aria-label={fullscreen.active ? 'Exit full screen' : 'Full screen'}
 					class={ctrlClass}
-					onclick={() => fullscreen.toggle()}
+					onconfirm={() => fullscreen.toggle()}
 				>
 					{#if fullscreen.active}<MinimizeIcon />{:else}<MaximizeIcon />{/if}
-				</Button>
+				</HoldButton>
 			{/if}
 			{#if session}
-				<Button
+				<HoldButton
 					variant="ghost"
 					size="icon"
 					aria-label="Pocket mode"
 					class={ctrlClass}
-					onclick={() => (pocket = true)}
+					onconfirm={() => (pocket = true)}
 				>
 					<MoonStarIcon />
-				</Button>
+				</HoldButton>
 			{:else}
 				<Button
 					href={resolve(`/edit?id=${profile.id}`)}
@@ -514,7 +514,11 @@
 			{:else if upcoming}
 				<span class="text-sm">Next: {upcoming.label}</span>
 			{/if}
-			<span class="absolute bottom-8 text-xs text-neutral-800">Double-tap to exit</span>
+			<span
+				class="absolute bottom-[max(2rem,env(safe-area-inset-bottom))] text-xs text-neutral-800"
+			>
+				Double-tap to exit
+			</span>
 		</button>
 	{/if}
 
