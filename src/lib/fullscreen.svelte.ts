@@ -23,7 +23,9 @@ class FullscreenManager {
 	}
 
 	get available(): boolean {
-		return this.supported && !this.standalone;
+		// Enable fullscreen for standalone mode as well
+		// since notification bar and navigation bar are still visible
+		return this.supported; // && !this.standalone;
 	}
 
 	/** Must be called from a user gesture (or shortly after one). */

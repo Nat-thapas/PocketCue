@@ -297,7 +297,7 @@
 			<div class="min-w-0 flex-1 text-center">
 				<div class="truncate text-sm font-medium">{profile.name}</div>
 				{#if session}
-					<div class="flex flex-col items-center justify-center gap-1 text-xs opacity-70">
+					<div class="mt-1 flex flex-col items-center justify-center gap-1 text-xs opacity-70">
 						{#if wakeLock.active}
 							<div class="flex items-center gap-0.5"><SunIcon class="size-3" /> Screen stays on</div>
 						{:else}
@@ -481,7 +481,7 @@
 	<!-- Alert label -->
 	{#if banner && !pocket}
 		{#key banner.id}
-			<div class="pointer-events-none fixed inset-x-0 top-1/4 z-40 flex justify-center px-4">
+			<div class="pointer-events-none fixed inset-x-0 top-24 z-40 flex justify-center px-4">
 				<div
 					class="banner max-w-full rounded-3xl bg-foreground px-8 py-5 text-center text-3xl font-semibold text-background shadow-2xl"
 					role="status"
