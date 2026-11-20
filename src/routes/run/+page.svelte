@@ -297,14 +297,14 @@
 			<div class="min-w-0 flex-1 text-center">
 				<div class="truncate text-sm font-medium">{profile.name}</div>
 				{#if session}
-					<div class="flex items-center justify-center gap-1 text-xs opacity-70">
+					<div class="flex flex-col items-center justify-center gap-1 text-xs opacity-70">
 						{#if wakeLock.active}
-							<SunIcon class="size-3" /> Screen stays on
+							<div class="flex items-center gap-0.5"><SunIcon class="size-3" /> Screen stays on</div>
 						{:else}
-							<TriangleAlertIcon class="size-3" /> Keep the screen on
+							<div class="flex items-center gap-0.5"><TriangleAlertIcon class="size-3" /> Keep the screen on</div>
 						{/if}
 						{#if store.settings.holdToConfirm}
-							<span aria-hidden="true">·</span> <LockIcon class="size-3" /> Hold buttons
+							<div class="flex items-center gap-0.5"><LockIcon class="size-3" /> Hold buttons</div>
 						{/if}
 					</div>
 				{/if}
